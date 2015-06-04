@@ -1,10 +1,32 @@
 class Cipher
   ALPHABET = ('A'..'Z').to_a # => ['A', 'B', 'C', ...]
 
+    #first = caesar(text, 6)
+    #second = caesar(text, 0)
+    #third = caesar(text, 17)
+    #fourth = caesar(text, 3)
+    #fifth = caesar(text, 4)
+    #sixth = caesar(text, 13)
+
   def self.vigenere(keyword, text)
     deciphered_keyword = caesar_guess(keyword)
+    keys = deciphered_keyword.each_char.map { |char| ALPHABET.index(char) }
+    iterator = 0
 
-    solution
+    text.chars.map { |char|
+
+      if ALPHABET.include?(char)
+        if iterator == keys.length
+          iterator = 0
+        end
+        
+      key = ALPHABET.rotate(keys[iterator].to_i)
+        iterator += 1
+        ALPHABET[key.index(char)]
+      else
+        char
+      end
+
   end
 
   # Solve a Caesar cipher with a given offset
