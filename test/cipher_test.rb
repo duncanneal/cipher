@@ -9,6 +9,7 @@ class CipherTest < MiniTest::Test
     @simple_cipher  = File.read(File.dirname(__FILE__) + '/fixtures/simple_cipher.txt')
     @simple_output  = File.read(File.dirname(__FILE__) + '/fixtures/simple_out.txt')
     @complex_cipher = File.read(File.dirname(__FILE__) + '/fixtures/complex_cipher.txt')
+    @complex_ouput  = File.read(File.dirname(__FILE__) + '/fixtures/complex_out.txt')
   end
 
   def test_caesar_cipher
@@ -37,7 +38,6 @@ class CipherTest < MiniTest::Test
 
   def test_complex_vigenere_cipher
     keyword, text = @complex_cipher.split("\n\n")
-    # @complex_ouput = ... YOUR SOLUTION
     assert_equal @complex_output, Cipher.vigenere(keyword, text)
   end
 end

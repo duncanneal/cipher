@@ -1,13 +1,6 @@
 class Cipher
   ALPHABET = ('A'..'Z').to_a # => ['A', 'B', 'C', ...]
 
-    #first = caesar(text, 6)
-    #second = caesar(text, 0)
-    #third = caesar(text, 17)
-    #fourth = caesar(text, 3)
-    #fifth = caesar(text, 4)
-    #sixth = caesar(text, 13)
-
   def self.vigenere(keyword, text)
     deciphered_keyword = caesar_guess(keyword)
     keys = deciphered_keyword.each_char.map { |char| ALPHABET.index(char) }
@@ -20,13 +13,20 @@ class Cipher
           iterator = 0
         end
 
-      key = ALPHABET.rotate(keys[iterator].to_i)
+        key = ALPHABET.rotate(keys[iterator].to_i)
         iterator += 1
         ALPHABET[key.index(char)]
       else
         char
       end
       }.join
+    end
+
+  def self.convert_key_to_number(keyword)
+    alpha = ALPHABET.each_with_index.map do |letter, idx| 
+      "#{letter}, #{idx}"
+  end  
+
   end
 
   # Solve a Caesar cipher with a given offset
