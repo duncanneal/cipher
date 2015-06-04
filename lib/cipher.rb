@@ -19,14 +19,14 @@ class Cipher
         if iterator == keys.length
           iterator = 0
         end
-        
+
       key = ALPHABET.rotate(keys[iterator].to_i)
         iterator += 1
         ALPHABET[key.index(char)]
       else
         char
       end
-
+      }.join
   end
 
   # Solve a Caesar cipher with a given offset
